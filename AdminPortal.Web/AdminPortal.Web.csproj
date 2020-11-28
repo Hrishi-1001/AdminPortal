@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminPortal.Data\AdminPortal.Data.csproj" />
+    <ProjectReference Include="..\AdminPortal.Data\AdminPortal.Models.csproj" />
     <ProjectReference Include="..\AdminPortal.Repository\AdminPortal.Repository.csproj" />
   </ItemGroup>
 

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<ProjectReference Include="..\AdminPortal.Data\AdminPortal.Data.csproj" />
+	<ProjectReference Include="..\AdminPortal.Data\AdminPortal.Models.csproj" />
   </ItemGroup>
 
 </Project>

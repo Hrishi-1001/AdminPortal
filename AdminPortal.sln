@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPortal.Data", "AdminPortal.Data\AdminPortal.Data.csproj", "{973280BA-8176-4105-A4C5-C09CBA0403E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPortal.Models", "AdminPortal.Data\AdminPortal.Models.csproj", "{973280BA-8176-4105-A4C5-C09CBA0403E9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPortal.Repository", "AdminPortal.Repository\AdminPortal.Repository.csproj", "{AE04614B-167D-4D60-93ED-DD9C62E6FFAB}"
 EndProject

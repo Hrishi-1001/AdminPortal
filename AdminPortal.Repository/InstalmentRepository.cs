@@ -1,7 +1,5 @@
 ﻿using AdminPortal.Data;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Net;
 
@@ -17,7 +15,7 @@ namespace AdminPortal.Repository
 
 	public class InstalmentRepository : IInstalmentRepository
 	{
-		List<Instalment> Instalments;
+		readonly List<Instalment> Instalments;
 
 		public InstalmentRepository(List<Instalment> instalments)
 		{

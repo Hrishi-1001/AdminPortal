@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AdminPortal.Data;
+using AdminPortal.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using AdminPortal.Data;
-using AdminPortal.Repository;
+using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Pages.Users
 {
-    public class CreateModel : PageModel
+	public class CreateModel : PageModel
     {
         private readonly AdminPortalDbContext _context;
 

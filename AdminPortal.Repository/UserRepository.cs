@@ -1,7 +1,5 @@
-﻿using System;
+﻿using AdminPortal.Data;
 using System.Collections.Generic;
-using System.Text;
-using AdminPortal.Data;
 using System.Linq;
 
 namespace AdminPortal.Repository
@@ -16,7 +14,7 @@ namespace AdminPortal.Repository
 	public class UserRepository : IUserRepository
 	{
 		private readonly AdminPortalDbContext adminPortalDbContext;
-		List<User> Users;
+		readonly List<User> Users;
 
 		public UserRepository(AdminPortalDbContext adminPortalDbContext)
 		{

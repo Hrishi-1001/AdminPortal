@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using AdminPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminPortal.Web.Pages.Identity.Actions
 {
@@ -25,7 +20,7 @@ namespace AdminPortal.Web.Pages.Identity.Actions
 		public void OnPost(string phoneNumber, string password)
 		{
 			UserRepository = userRepository;
-			var user = UserRepository.GetExact(phoneNumber);
+			Data.User user = UserRepository.GetExact(phoneNumber);
 			if (user != null && !user.IsLoggedIn && user.Authenticates(password))
 			{
 				Response.Redirect("/Home");
