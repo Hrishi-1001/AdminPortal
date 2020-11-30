@@ -1,13 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AdminPortal.Data;
 using AdminPortal.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdminPortal.Web.Pages.Identity.Actions
+namespace AdminPortal.Login.Pages
 {
 	[AllowAnonymous]
 	public class LoginModel : PageModel
 	{
-		public static bool InvalidEntry = false;
 		private readonly IUserRepository userRepository;
 
 		public IUserRepository UserRepository { get; set; }
@@ -19,8 +24,7 @@ namespace AdminPortal.Web.Pages.Identity.Actions
 
 		public void OnPost(string phoneNumber, string password)
 		{
-			UserRepository = userRepository;
-			Data.User user = UserRepository.GetExact(phoneNumber);
+			User user = userRepository.GetExact(phoneNumber);
 			if (user != null && !user.IsLoggedIn && user.Authenticates(password))
 			{
 				Response.Redirect("/Home");

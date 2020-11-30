@@ -1,16 +1,10 @@
 ﻿@page "/Login"
-@using AdminPortal.Web.Pages.Identity.Actions
+@using AdminPortal.Login.Pages
 @model LoginModel
 
 <div class="jumbotron" style="min-height: 100%; min-width: 100%;">
 	<div class="modal-title text-center">
 		<h1 style="color: blue;">Welcome to the Admin Portal</h1>
-	</div>
-	<div class="text-center" style="margin-bottom: 5%;">
-		@if (LoginModel.InvalidEntry)
-		{
-			<h6 style="color: red">Invalid Username or Password</h6>
-		}
 	</div>
 	<form method="post">
 		<div class="form-group text-center">
