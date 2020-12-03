@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminPortal.Web.Pages
 {
-    //[Authorize]
+    [Authorize]
     public class HomeModel : PageModel
     {
         public void OnGet()
