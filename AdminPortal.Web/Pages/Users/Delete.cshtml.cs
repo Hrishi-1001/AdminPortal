@@ -1,4 +1,6 @@
 ﻿using AdminPortal.Data;
+using AdminPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -6,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Pages.Users
 {
-	public class DeleteModel : PageModel
+	[Authorize]
+    public class DeleteModel : PageModel
     {
-        private readonly AdminPortal.Repository.AdminPortalDbContext _context;
+        private readonly AdminPortalDbContext _context;
 
-        public DeleteModel(AdminPortal.Repository.AdminPortalDbContext context)
+        public DeleteModel(AdminPortalDbContext context)
         {
             _context = context;
         }

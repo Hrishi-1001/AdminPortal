@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using AdminPortal.Data;
+using AdminPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using AdminPortal.Data;
-using AdminPortal.Repository;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Pages.Users
 {
+	[Authorize]
     public class IndexModel : PageModel
     {
-        private readonly AdminPortal.Repository.AdminPortalDbContext _context;
+        private readonly AdminPortalDbContext _context;
 
-        public IndexModel(AdminPortal.Repository.AdminPortalDbContext context)
+        public IndexModel(AdminPortalDbContext context)
         {
             _context = context;
         }

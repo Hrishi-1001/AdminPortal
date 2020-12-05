@@ -1,4 +1,6 @@
 ﻿using AdminPortal.Data;
+using AdminPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -7,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Pages.Users
 {
-	public class EditModel : PageModel
+	[Authorize]
+    public class EditModel : PageModel
     {
-        private readonly AdminPortal.Repository.AdminPortalDbContext _context;
+        private readonly AdminPortalDbContext _context;
 
-        public EditModel(AdminPortal.Repository.AdminPortalDbContext context)
+        public EditModel(AdminPortalDbContext context)
         {
             _context = context;
         }

@@ -13,6 +13,7 @@ namespace AdminPortal.Web.Pages
     {
         public void OnGet()
         {
+
         }
     }
 }

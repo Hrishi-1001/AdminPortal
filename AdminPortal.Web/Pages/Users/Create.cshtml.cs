@@ -1,11 +1,13 @@
 ﻿using AdminPortal.Data;
 using AdminPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Pages.Users
 {
+    [Authorize]
 	public class CreateModel : PageModel
     {
         private readonly AdminPortalDbContext _context;
