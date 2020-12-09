@@ -19,7 +19,7 @@ namespace AdminPortal.Repository
 		public UserRepository(AdminPortalDbContext adminPortalDbContext)
 		{
 			this.adminPortalDbContext = adminPortalDbContext;
-			Users = adminPortalDbContext.Users.ToList();
+			Users = this.adminPortalDbContext.Users.ToList();
 		}
 
 		public List<User> GetAll()
@@ -37,9 +37,17 @@ namespace AdminPortal.Repository
 
 		User IUserRepository.GetExact(string phoneNumber)
 		{
-			return (from user in Users
-					where user.PhoneNumber.Equals(phoneNumber)
-					select user).ToList().First();
+			var _user = from user in Users
+						where user.PhoneNumber.Equals(phoneNumber)
+						select user;
+			if (!_user.Any())
+			{
+				return null;
+			}
+			else
+			{
+				return _user.ToList().First();
+			}
 		}
 
 	}

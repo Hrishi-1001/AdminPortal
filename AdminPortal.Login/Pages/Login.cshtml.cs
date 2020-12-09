@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using AdminPortal.Data;
 using AdminPortal.Repository;
@@ -24,10 +26,22 @@ namespace AdminPortal.Login.Pages
 
 		public void OnPost(string phoneNumber, string password)
 		{
-			User user = userRepository.GetExact(phoneNumber);
-			if (user != null && !user.IsLoggedIn && user.Authenticates(password))
+			if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(phoneNumber))
 			{
-				Response.Redirect("/Home");
+				Response.Redirect("/Login");
+			}
+			else
+			{
+				var pass_hash = Encoding.ASCII.GetString((SHA256.Create()).ComputeHash((Encoding.ASCII.GetBytes(password))));
+				User user = userRepository.GetExact(phoneNumber);
+				if (user != null && !user.IsLoggedIn && user.Authenticates(pass_hash))
+				{
+					Response.Redirect("/Home");
+				}
+				else
+				{
+					Response.Redirect("/Login");
+				}
 			}
 		}
 	}

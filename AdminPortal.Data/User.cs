@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace AdminPortal.Data
 {
 	public class User
 	{
+		private string password;
+
 		public User()
 		{
 
@@ -28,7 +32,7 @@ namespace AdminPortal.Data
 
 		//User Passphrase
 		[DataType(DataType.Password)]
-		public string Password { get; set; }
+		public string Password { get => password; set => password = Encoding.ASCII.GetString((SHA256.Create()).ComputeHash((Encoding.ASCII.GetBytes(value)))); }
 
 		//Admin Rights
 		public bool IsAdmin { get; set; }

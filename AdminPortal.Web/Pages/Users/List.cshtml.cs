@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AdminPortal.Web.Pages.Users
 {
 	[Authorize]
-    public class IndexModel : PageModel
+	public class IndexModel : PageModel
     {
         private readonly AdminPortalDbContext _context;
 

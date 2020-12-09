@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AdminPortal.Web.Pages.Users
 {
 	[Authorize]
-    public class DeleteModel : PageModel
+	public class DeleteModel : PageModel
     {
         private readonly AdminPortalDbContext _context;
 

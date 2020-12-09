@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AdminPortal.Data\AdminPortal.Models.csproj" />
     <ProjectReference Include="..\AdminPortal.Repository\AdminPortal.Repository.csproj" />
     <ProjectReference Include="..\AdminPortal.Web\AdminPortal.Web.csproj" />
