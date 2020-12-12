@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace AdminPortal.Data
+namespace AdminPortal.Models
 {
 	public class User
 	{

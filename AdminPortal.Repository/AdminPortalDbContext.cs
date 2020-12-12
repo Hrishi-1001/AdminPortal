@@ -1,4 +1,4 @@
-﻿using AdminPortal.Data;
+﻿using AdminPortal.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminPortal.Repository

@@ -1,4 +1,4 @@
-﻿using AdminPortal.Data;
+﻿using AdminPortal.Models;
 using AdminPortal.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;

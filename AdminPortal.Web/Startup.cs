@@ -1,4 +1,5 @@
 using AdminPortal.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace AdminPortal.Web
 
 			services.AddScoped<IUserRepository, UserRepository>();
 
-			services.AddAuthentication().AddCookie();
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 		}
 
@@ -51,7 +52,7 @@ namespace AdminPortal.Web
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
