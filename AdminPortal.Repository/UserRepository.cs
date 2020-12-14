@@ -1,6 +1,8 @@
 ﻿using AdminPortal.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace AdminPortal.Repository
 {
@@ -9,6 +11,7 @@ namespace AdminPortal.Repository
 		List<User> GetAll();
 		List<User> GetMatching(string phoneNumber);
 		User GetExact(string phoneNumber);
+		User GetExact(string phoneNumber, string password);
 	}
 
 	public class UserRepository : IUserRepository
@@ -35,7 +38,7 @@ namespace AdminPortal.Repository
 				   select user).ToList();
 		}
 
-		User IUserRepository.GetExact(string phoneNumber)
+		public User GetExact(string phoneNumber)
 		{
 			var _user = from user in Users
 						where user.PhoneNumber.Equals(phoneNumber)
@@ -47,6 +50,19 @@ namespace AdminPortal.Repository
 			else
 			{
 				return _user.ToList().First();
+			}
+		}
+
+		public User GetExact(string phoneNumber, string password)
+		{
+			var user = GetExact(phoneNumber);
+			if (user == null || user.Password != Encoding.ASCII.GetString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(password))))
+			{
+				return null;
+			}
+			else
+			{
+				return user;
 			}
 		}
 
