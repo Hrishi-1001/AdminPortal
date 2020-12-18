@@ -1,3 +1,4 @@
+using AdminPortal.Models;
 using AdminPortal.Repository;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -29,9 +30,8 @@ namespace AdminPortal.Web
 			});
 
 			services.AddScoped<IUserRepository, UserRepository>();
-
-			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
+			services.AddScoped<IUser, User>();
+			
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +52,7 @@ namespace AdminPortal.Web
 			app.UseStaticFiles();
 
 			app.UseRouting();
-			app.UseAuthentication();
+			
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>

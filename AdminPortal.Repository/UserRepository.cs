@@ -6,18 +6,10 @@ using System.Text;
 
 namespace AdminPortal.Repository
 {
-	public interface IUserRepository
-	{
-		List<User> GetAll();
-		List<User> GetMatching(string phoneNumber);
-		User GetExact(string phoneNumber);
-		User GetExact(string phoneNumber, string password);
-	}
-
 	public class UserRepository : IUserRepository
 	{
 		private readonly AdminPortalDbContext adminPortalDbContext;
-		readonly List<User> Users;
+		readonly List<IUser> Users;
 
 		public UserRepository(AdminPortalDbContext adminPortalDbContext)
 		{
@@ -25,20 +17,20 @@ namespace AdminPortal.Repository
 			Users = this.adminPortalDbContext.Users.ToList();
 		}
 
-		public List<User> GetAll()
+		public List<IUser> GetAll()
 		{
 			return (from User in Users
 					select User).ToList();
 		}
 
-		public List<User> GetMatching(string phoneNumber)
+		public List<IUser> GetMatching(string phoneNumber)
 		{
 			return (from user in Users
 				   where user.PhoneNumber.Contains(phoneNumber)
 				   select user).ToList();
 		}
 
-		public User GetExact(string phoneNumber)
+		public IUser GetExact(string phoneNumber)
 		{
 			var _user = from user in Users
 						where user.PhoneNumber.Equals(phoneNumber)
@@ -53,7 +45,7 @@ namespace AdminPortal.Repository
 			}
 		}
 
-		public User GetExact(string phoneNumber, string password)
+		public IUser GetExact(string phoneNumber, string password)
 		{
 			var user = GetExact(phoneNumber);
 			if (user == null || user.Password != Encoding.ASCII.GetString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(password))))
