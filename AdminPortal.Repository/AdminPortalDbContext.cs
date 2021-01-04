@@ -10,6 +10,6 @@ namespace AdminPortal.Repository
 			
 		}
 
-		public DbSet<IUser> Users { get; set; }
+		public DbSet<User> Users { get; set; }
 	}
 }

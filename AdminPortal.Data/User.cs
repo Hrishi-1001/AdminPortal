@@ -2,12 +2,10 @@
 using System.Security.Cryptography;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 
 namespace AdminPortal.Models
 {
-
-	public class User : IdentityUser, IUser
+	public class User
 	{
 		private string password;
 
@@ -30,11 +28,11 @@ namespace AdminPortal.Models
 		//UserID and PK
 		[Key]
 		[DataType(DataType.PhoneNumber)]
-		public new string PhoneNumber { get; set; }
+		public string PhoneNumber { get; set; }
 
 		//User Passphrase
 		[DataType(DataType.Password)]
-		public string Password { get => password; set => password = Encoding.ASCII.GetString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(value))); }
+		public string Password { get => password; set => password = Encoding.ASCII.GetString((SHA256.Create()).ComputeHash((Encoding.ASCII.GetBytes(value)))); }
 
 		//Admin Rights
 		public bool IsAdmin { get; set; }

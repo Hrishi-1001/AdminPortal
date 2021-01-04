@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Net;
 
-namespace AdminPortal.Models
+namespace AdminPortal.Data
 {
-
-	class Instalment
+	public class Instalment
 	{
-		private readonly Sensors sensors;
-
-		public Instalment(Sensors sensors)
+		public Instalment(IPAddress iD, string location)
 		{
-			this.sensors = sensors;
+			ID = iD;
+			Location = location;
 		}
+
+		//ID
+		public IPAddress ID { get; set; }
+
+		[DataType(DataType.PostalCode)]
+		public string Location { get; set; }
 	}
 }
