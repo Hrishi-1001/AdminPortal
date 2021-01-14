@@ -3,14 +3,7 @@
 @model HomeModel
 
 
-<style>
-	html, body {
-		height: 100%;
-		overflow: auto;
-	}
-</style>
 
-<iframe src="https://www.google.com/maps/d/embed?mid=1hFFNBkRFkPArlFxjDtGq5TX27YnO31qN"
-		style="position: fixed; left: 0; width: 100%; height: 100%;">
-</iframe>
-
+<body>
+	<partial name="Partials/Map" model="new Pages.Partials.MapModel()" />
+</body>

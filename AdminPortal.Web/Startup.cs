@@ -1,8 +1,5 @@
-using AdminPortal.Repository;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,16 +19,6 @@ namespace AdminPortal.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
-
-			services.AddDbContextPool<AdminPortalDbContext>(options =>
-			{
-				options.UseSqlServer(Configuration.GetConnectionString("AdminPortalDb"));
-			});
-
-			services.AddScoped<IUserRepository, UserRepository>();
-
-			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +34,8 @@ namespace AdminPortal.Web
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
+
+			
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
