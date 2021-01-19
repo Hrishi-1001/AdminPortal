@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>AdminPortal</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
 
@@ -17,13 +17,16 @@
 				</div>
 				<ul class="navbar-nav nav-tabs">
 					<li class="nav-item">
-						<a asp-page="Home" class="nav-link text-dark">Map</a>
+						<a asp-page="Home" class="nav-link text-dark" role="button">Map</a>
 					</li>
 					<li class="nav-item">
-						<a asp-page="Search" class="nav-link text-dark">Search</a>
+						<a asp-page="Search" class="nav-link text-dark" role="button">Search</a>
 					</li>
 					<li class="nav-item">
-						<a asp-page="Alerts" class="nav-link text-dark">Alerts</a>
+						<a asp-page="Alerts" class="nav-link text-dark" role="button">Alerts</a>
+					</li>
+					<li class="nav-item">
+						<partial name="Partials/Locality" model="new Pages.Partials.LocalityModel()"/>
 					</li>
 				</ul>
 			</nav>

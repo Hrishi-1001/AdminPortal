@@ -13,5 +13,10 @@ namespace AdminPortal.Web.Models
 		public string Name { get; set; }
 		public override string PasswordHash { get; set; }
 		public Role Role { get; set; }
+
+		public User()
+		{
+			
+		}
 	}
 }

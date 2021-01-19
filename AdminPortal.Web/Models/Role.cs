@@ -2,7 +2,7 @@
 {
 	public struct Role
 	{
-		bool ServiceOperator;
-		bool Admin;
+		public bool ServiceOperator;
+		public bool Admin;
 	}
 }
