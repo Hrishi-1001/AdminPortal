@@ -3,8 +3,10 @@
 @model HomeModel
 
 
-
 <body>
-	<partial name="Partials/Search" model="new Pages.Partials.SearchModel()" />
+	<div class="d-flex flex-row" style="justify-content: space-between;">
+		<partial name="Partials/Search" model="new Pages.Partials.SearchModel()" />
+		<partial name="Partials/LocalitySelect" model="new Pages.Partials.LocalityModel()" />
+	</div>
 	<partial name="Partials/Map" model="new Pages.Partials.MapModel()" />
 </body>

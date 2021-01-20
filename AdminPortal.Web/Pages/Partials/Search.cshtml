@@ -1,8 +1,8 @@
 ﻿@model SearchModel
 
 <body>
-	<form method="get">
-		<div class="d-flex flex-row">
+	<form action="Partials/Search" method="get">
+		<div class="d-flex flex-row" style="justify-content: space-between;">
 			<div id="search-div" class="form-group">
 				<input asp-for="@Model.SearchString" value="@Model.SearchString" class="form-control" id="search-bar" placeholder="Enter ID" />
 			</div>

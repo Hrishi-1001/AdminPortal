@@ -1,13 +1,11 @@
-﻿@page
+﻿@page "/Search"
 @model AdminPortal.Web.Pages.SearchModel
 @{
 }
 
 <body>
-	<div class="d-flex flex-row">
+	<div class="d-flex flex-row" style="justify-content: space-between;">
 		<partial name="Partials/Search" model="new Pages.Partials.SearchModel()" />
-		<div class="align-content-end">
-			<partial name="Partials/LocalitySelect" model="new Pages.Partials.LocalityModel()" />
-		</div>
+		<partial name="Partials/LocalitySelect" model="new Pages.Partials.LocalityModel()" />
 	</div>
 </body>
