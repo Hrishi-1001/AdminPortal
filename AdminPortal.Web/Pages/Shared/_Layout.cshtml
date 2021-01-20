@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<header>
+	<header id="header" style="margin-bottom: 1%;">
 		<div style="margin-left: 10%; width: 80%;">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
@@ -26,7 +26,7 @@
 						<a asp-page="Alerts" class="nav-link text-dark" role="button">Alerts</a>
 					</li>
 					<li class="nav-item">
-						<partial name="Partials/Locality" model="new Pages.Partials.LocalityModel()"/>
+						<partial name="Partials/LocalitySelect" model="new Pages.Partials.LocalityModel()"/>
 					</li>
 				</ul>
 			</nav>

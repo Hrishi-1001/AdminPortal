@@ -4,5 +4,10 @@
 }
 
 <body>
-	<p>This is the search page</p>
+	<div class="d-flex flex-row">
+		<partial name="Partials/Search" model="new Pages.Partials.SearchModel()" />
+		<div class="align-content-end">
+			<partial name="Partials/LocalitySelect" model="new Pages.Partials.LocalityModel()" />
+		</div>
+	</div>
 </body>
