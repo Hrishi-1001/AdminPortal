@@ -5,8 +5,8 @@
 
 <body>
 	<div class="d-flex flex-row" style="justify-content: space-between;">
-		<partial name="Partials/Search" />
-		<partial name="Partials/LocalitySelect" model="new Pages.Partials.LocalityModel()" />
+		<partial name="Partials/Search" model="new Partials.SearchModel()"/>
+		<partial name="Partials/LocalitySelect" model="new Partials.LocalityModel()" />
 	</div>
-	<partial name="Partials/Map" model="new Pages.Partials.MapModel()" />
+	<partial name="Partials/Map" model="new Partials.MapModel()" />
 </body>
