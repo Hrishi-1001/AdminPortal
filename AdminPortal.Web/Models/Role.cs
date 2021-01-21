@@ -1,8 +1,10 @@
-﻿namespace AdminPortal.Web.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace AdminPortal.Web.Models
 {
-	public struct Role
+	public class Role : IdentityRole
 	{
-		public bool ServiceOperator;
-		public bool Admin;
+		public bool Admin { get; set; }
+		public bool ServiceOperator { get; set; }
 	}
 }

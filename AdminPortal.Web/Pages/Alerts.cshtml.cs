@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminPortal.Web.Pages
 {
-    [Authorize]
-    public class IndexModel : PageModel
-    {
-        public void OnGet()
-        {
-        }
-    }
+	[Authorize]
+	public class AlertsModel : PageModel
+	{
+		public void OnGet()
+		{
+		}
+	}
 }
