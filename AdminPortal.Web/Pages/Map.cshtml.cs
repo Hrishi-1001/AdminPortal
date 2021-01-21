@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdminPortal.Web.Pages.Partials
+namespace AdminPortal.Web.Pages
 {
-    public class LocalityModel : PageModel
+    public class MapModel : PageModel
     {
-		public void OnGet()
+        
+        public void OnGet()
         {
-
         }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminPortal.Web.Pages
 {
-    public class SearchModel : PageModel
+    public class IndexModel : PageModel
     {
         public void OnGet()
         {
