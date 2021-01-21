@@ -1,5 +1,21 @@
 ﻿@model SearchModel
 
+<head>
+	<script type="text/javascript">
+        let width = document.getElementById('header').offsetWidth();
+        document.documentElement.style.setProperty('--width', width);
+	</script>
+	<style>
+		:root {
+			--width: 0px;
+		}
+
+		#search-div {
+			width: var(--width);
+		}
+	</style>
+</head>
+
 <body>
 	<form formaction="Partials/Search" method="get">
 		<div class="d-flex flex-row" style="justify-content: space-between;">
