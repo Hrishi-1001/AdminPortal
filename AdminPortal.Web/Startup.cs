@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using AdminPortal.Web.Data;
 
 namespace AdminPortal.Web
 {
@@ -20,6 +21,9 @@ namespace AdminPortal.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
+
+		    services.AddDbContext<AssetContext>(options =>
+		            options.UseSqlServer(Configuration.GetConnectionString("AssetContext")));
 
 		}
 
@@ -43,8 +47,6 @@ namespace AdminPortal.Web
 			app.UseStaticFiles();
 
 			app.UseRouting();
-			app.UseAuthentication();
-			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{

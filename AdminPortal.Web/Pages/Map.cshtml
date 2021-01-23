@@ -1,4 +1,5 @@
 ﻿@page "/Map"
+
 @{
 
 }
@@ -6,23 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Simple Map</title>
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNP8qLyU6qxfS49mZ4O9n4JQrSbc8p-EM&callback=initMap&libraries=&v=weekly"
 			defer></script>
-	<style type="text/css">
-		 #map {
-			 height: 690px;
-		 }
-
-		 html,
-		 body {
-			 height: 100%;
-			 margin: 0;
-			 padding: 0;
-		 }
-	</style>
-	<script>
+	<script type="text/javascript">
 		let map;
 		function initMap() {
 			map = new google.maps.Map(document.getElementById("map"), {
@@ -33,6 +20,6 @@
 	</script>
 </head>
 <body>
-	<div id="map"></div>
+	<div id="map" style="height: 500px;"></div>
 </body>
 </html>
