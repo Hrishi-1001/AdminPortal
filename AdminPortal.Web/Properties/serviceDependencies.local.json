@@ -3,10 +3,6 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "UserContext"
-    },
-    "mssql2": {
-      "type": "mssql.local",
-      "connectionId": "UserContextConnection"
     }
   }
 }

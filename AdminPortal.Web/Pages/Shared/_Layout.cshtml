@@ -6,14 +6,6 @@
 	<title>AdminPortal</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" />
-
-	<style>
-		.sidebar {
-			height: 100%;
-			width: 30%;
-			margin-right: 0.5%;
-		}
-	</style>
 </head>
 <body>
 	<header id="header" style="margin-bottom: 1%;">
@@ -26,32 +18,10 @@
 
 	<div class="container-fluid">
 		<div class="d-flex flex-row">
-			<div id="siderbar-div" class="sidebar">
-				<input class="form-control" />
-			</div>
+			<partial name="Partials/SidebarPartial" model="new Partials.SidebarPartialModel()" />
 			<div id="render-div" class="d-flex flex-column" style="margin-left: 0.5%; width: 100%;">
-				<form id="search-form" method="get">
-					<div class="d-flex flex-row-reverse" style="justify-content: space-between;">
-						<div class="d-flex flex-row">
-							<div class="form-group">
-								<input class="form-control" id="search-bar" placeholder="Enter ID" />
-							</div>
-							<div>
-								<button class="btn btn-primary" type="submit">Search</button>
-							</div>
-						</div>
-						<div class="dropdown">
-							<select class="btn btn-secondary">
-								<option class="dropdown-item" value="" style="background-color: white;">Select your locality</option>
-								<option class="dropdown-item" value="kothrud" style="background-color: white;">Kothrud</option>
-								<option class="dropdown-item" value="karvenagar" style="background-color: white;">Karvenagar</option>
-								<option class="dropdown-item" value="wakad" style="background-color: white;">Wakad</option>
-								<option class="dropdown-item" value="dhanakawadi" style="background-color: white;">Dhanakawadi</option>
-							</select>
-						</div>
-					</div>
-				</form>
-				<main class="pb-3" role="main" style="width: 100%;">
+				<partial name="Partials/SearchPartial" model="new Partials.SearchPartialModel()" />
+				<main id="main" class="pb-3" role="main" style="width: 100%;">
 					@RenderBody()
 				</main>
 			</div>
