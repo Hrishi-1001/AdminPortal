@@ -1,26 +1,11 @@
 ﻿@model SelectLocModel
 
-<head>
-	<script type="text/javascript">
-		function getLatitude(zip) {
-			return 14.9536;
-		}
+@{
+}
 
-		function getLongitude(zip) {
-			return 14.5564;
-		}
 
-		function selLoc(location) {
-			map = new google.maps.Map(document.getElementById("map"), {
-				center: { lat: getLatitude(@Model.Location) , lng: getLongitude(@Model.Location) },
-				zoom: 8,
-			});
-		}
-	</script>
-</head>
 
-<body>
-	<div id="dropdown-div" class="dropdown">
-		<select asp-for="Location" asp-items="Model.Locations" onchange="selLoc(@Model.Location)" id="select-loc" class="btn btn-secondary"></select>
-	</div>
-</body>
+<div id="dropdown-div" class="dropdown">
+	<select asp-for="Location" asp-items="Model.Locations" onchange="moveToLoc(this.value)"
+			id="select-loc" class="btn btn-secondary"></select>
+</div>

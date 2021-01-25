@@ -2,52 +2,52 @@
 @model IndexModel
 
 @{
-    ViewData["Title"] = "List";
+	ViewData["Title"] = "List";
 }
 
 
 <p>
-    <a asp-page="Create">Create New</a>
+	<a asp-page="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Asset[0].ZIP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Asset[0].Latitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Asset[0].Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Asset[0].Alert)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Asset[0].ZIP)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Asset[0].Latitude)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Asset[0].Longitude)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Asset[0].Alert)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
 @foreach (var item in Model.Asset) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZIP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alert)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ZIP)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Latitude)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Longitude)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Alert)
+			</td>
+			<td>
+				<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+				<a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+				<a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+			</td>
+		</tr>
 }
-    </tbody>
+	</tbody>
 </table>

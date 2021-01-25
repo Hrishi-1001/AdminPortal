@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdminPortal.Web.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,7 +10,7 @@ namespace AdminPortal.Web.Pages.Partials
 {
     public class SearchPartialModel : PageModel
     {
-        [BindProperty]
+		[BindProperty]
 		public string ID { get; set; }
 
 		public void OnGet()

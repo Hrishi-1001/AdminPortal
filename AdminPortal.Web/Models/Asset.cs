@@ -14,7 +14,13 @@ namespace AdminPortal.Web.Models
 		public string Latitude { get; set; }
 		public string Longitude { get; set; }
 
-		[DataType(DataType.MultilineText)]
-		public string Alert { get; set; }
+		[DataType(DataType.MultilineText)] 
+		public string Alert { get; set; } //needs to be a separate class
+
+		public Asset()
+		{
+
+		}
+
 	}
 }

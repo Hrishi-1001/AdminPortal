@@ -1,17 +1,15 @@
 ﻿@model SearchPartialModel
 
-<body>
-	<form formaction="Partials/SearchPartial" id="search-form" method="get">
-		<div class="d-flex flex-row-reverse" style="justify-content: space-between;">
-			<div class="d-flex flex-row">
-				<div class="form-group" style="margin-right: 0.5%;">
-					<input asp-for="@Model.ID" aria-valuenow="@Model.ID" class="form-control" id="search-bar" placeholder="Enter ID" />
-				</div>
-				<div>
-					<button class="btn btn-primary" type="submit">Search</button>
-				</div>
+<form formaction="Partials/SearchPartial" id="search-form" method="get">
+	<div class="d-flex flex-row-reverse" style="justify-content: space-between;">
+		<div class="d-flex flex-row">
+			<div class="form-group" style="margin-right: 0.5%;">
+				<input asp-for="@Model.ID" aria-valuenow="@Model.ID" class="form-control" id="search-bar" placeholder="Enter ID" />
 			</div>
-			<partial name="Partials/SelectLoc" model="new Partials.SelectLocModel()" />
+			<div>
+				<button class="btn btn-primary" type="submit">Search</button>
+			</div>
 		</div>
-	</form>
-</body>
+		<partial name="Partials/SelectLoc" model="new Partials.SelectLocModel()" />
+	</div>
+</form>

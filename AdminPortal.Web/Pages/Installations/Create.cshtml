@@ -24,17 +24,7 @@
                 <span asp-validation-for="Asset.ZIP" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Asset.Latitude" class="control-label"></label>
-                <input asp-for="Asset.Latitude" class="form-control" />
-                <span asp-validation-for="Asset.Latitude" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Asset.Longitude" class="control-label"></label>
-                <input asp-for="Asset.Longitude" class="form-control" />
-                <span asp-validation-for="Asset.Longitude" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input class="btn btn-primary" onclick="setMarker(this.Value)" value="Create" type="submit" />
             </div>
         </form>
     </div>
