@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdminPortal.Web.Migrations
 {
-    [DbContext(typeof(AssetContext))]
-    partial class AssetContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AssetDbContext))]
+    partial class AssetDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -23,17 +23,11 @@ namespace AdminPortal.Web.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Alert")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Latitude")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Longitude")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ZIP")
+                    b.Property<int>("State")
                         .HasColumnType("int");
+
+                    b.Property<string>("ZIP")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 

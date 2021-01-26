@@ -1,4 +1,5 @@
 ﻿let map;
+
 function initMap() {
 	if (map == null) {
 		map = new google.maps.Map(document.getElementById("map"), {
@@ -25,15 +26,20 @@ function getLatLngByZipcode(zipcode, callback) {
 
 function moveToLoc(zipcode) {
 	getLatLngByZipcode(zipcode, function (latLng) {
-		map.setCenter(latLng);		
+		map.setCenter(latLng);
+		map.setZoom(16);
 	});
 }
 
-function setMarker(latLng) {
-	new google.maps.Marker({
-		position: latLng,
-		map,
-		title: "This is an installation"
+function setMarker(zipcode) {
+	alert(zipcode);
+	getLatLngByZipcode(zipcode, function (latLng) {
+		let marker = new google.maps.Marker({
+			position: latLng,
+			title: "This is an installation"
+		});
+		map.setMarker(latLng);
+		map.setCenter(latLng);
+		map.setZoom(16);
 	});
-	map.setZoom(16);
 }

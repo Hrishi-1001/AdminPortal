@@ -1,0 +1,16 @@
+﻿@page "/Assets/Create"
+@model Pages.Assets.CreateModel
+@{
+}
+
+<form method="post">
+	<div class="form-group">
+		<div class="d-flex flex-column" style="margin-left: 25%; width: 50%;">
+			<input asp-for="@Model.Asset.ID" class="form-control" placeholder="ID" />
+			<input asp-for="@Model.Asset.ZIP" class="form-control" placeholder="postal code" />
+			<div class="d-flex flex-row-reverse">
+				<button asp-page="./Index" class="btn btn-secondary" onclick="setMarker(this.value)" type="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+</form>

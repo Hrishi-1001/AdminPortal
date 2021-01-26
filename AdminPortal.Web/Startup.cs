@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Data;
+using AdminPortal.Web.Pages.Assets;
+using AdminPortal.Web.Models;
 
 namespace AdminPortal.Web
 {
@@ -21,10 +23,9 @@ namespace AdminPortal.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
-
-		    services.AddDbContext<AssetContext>(options =>
-		            options.UseSqlServer(Configuration.GetConnectionString("AssetContext")));
-
+			services.AddScoped<Asset>();
+			services.AddDbContext<AssetDbContext>(options => 
+				options.UseSqlServer(Configuration.GetConnectionString("AssetDbContext")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
