@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
+using Microsoft.JSInterop;
 
 namespace AdminPortal.Web.Pages.Assets
 {
@@ -34,6 +35,8 @@ namespace AdminPortal.Web.Pages.Assets
             {
                 return Page();
             }
+
+            
 
             _context.Assets.Add(Asset);
             await _context.SaveChangesAsync();
