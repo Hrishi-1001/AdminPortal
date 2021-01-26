@@ -32,7 +32,6 @@ function moveToLoc(zipcode) {
 }
 
 function setMarker(zipcode) {
-	alert(zipcode);
 	getLatLngByZipcode(zipcode, function (latLng) {
 		let marker = new google.maps.Marker({
 			position: latLng,

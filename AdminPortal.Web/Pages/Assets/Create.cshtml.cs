@@ -1,45 +1,44 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
-using AdminPortal.Web.Data;
-using AdminPortal.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using AdminPortal.Web.Data;
+using AdminPortal.Web.Models;
 
 namespace AdminPortal.Web.Pages.Assets
 {
     public class CreateModel : PageModel
     {
-		private readonly AssetDbContext assetDbContext;
-		
-		[BindProperty]
-		public Asset Asset { get; set; }
+        private readonly AdminPortal.Web.Data.AssetDbContext _context;
 
-		public CreateModel(AssetDbContext assetDbContext, Asset asset)
-		{
-			this.assetDbContext = assetDbContext;
-			Asset = asset;
-		}
-
-
-		public IActionResult OnGet()
+        public CreateModel(AdminPortal.Web.Data.AssetDbContext context)
         {
-			return Page();
+            _context = context;
         }
 
-		public async Task<IActionResult> OnPostAsync()
-		{
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
 
-			assetDbContext.Assets.Add(Asset);
-			await assetDbContext.SaveChangesAsync();
-			return RedirectToPage("./Index");
-		}
+        [BindProperty]
+        public Asset Asset { get; set; }
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            _context.Assets.Add(Asset);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
     }
 }

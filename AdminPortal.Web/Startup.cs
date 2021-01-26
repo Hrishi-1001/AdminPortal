@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Data;
-using AdminPortal.Web.Pages.Assets;
 using AdminPortal.Web.Models;
 
 namespace AdminPortal.Web
