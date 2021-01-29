@@ -1,3 +1,4 @@
-﻿@page "/Map"
+﻿@page "{id?}"
+@model AdminPortal.Web.Pages.Assets.MapModel
 
-<div id="map" style="height: 500px;"></div>
+<div id="map" onload="setMarker(@Model.PostalCode)" style="height: 500px;"></div>
