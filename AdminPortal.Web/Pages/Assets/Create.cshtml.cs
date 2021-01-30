@@ -33,7 +33,7 @@ namespace AdminPortal.Web.Pages.Assets
 			_context.Assets.Add(Asset);
 			await _context.SaveChangesAsync();
 
-			return RedirectToPage("/Map", new { id = Asset.ZIP });
+			return RedirectToPage("/Map", new { zip = Asset.ZIP });
 		}
 	}
 }

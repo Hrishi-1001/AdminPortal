@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
+using AdminPortal.Web.Pages.Assets;
 
 namespace AdminPortal.Web
 {
@@ -22,7 +23,6 @@ namespace AdminPortal.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
-			services.AddScoped<Asset>();
 			services.AddDbContext<AssetDbContext>(options => 
 				options.UseSqlServer(Configuration.GetConnectionString("AssetDbContext")));
 		}

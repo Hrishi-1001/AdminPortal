@@ -1,4 +1,7 @@
-﻿@page "{id?}"
+﻿@page
 @model AdminPortal.Web.Pages.Assets.MapModel
 
-<div id="map" onload="setMarker(@Model.PostalCode)" style="height: 500px;"></div>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNP8qLyU6qxfS49mZ4O9n4JQrSbc8p-EM&callback=initMap&libraries=&v=weekly"
+			defer></script>
+
+	<div id="map" onload="markLocation('@Model.PostalCode')" style="height: 500px;"></div>
