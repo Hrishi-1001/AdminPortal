@@ -12,9 +12,9 @@ namespace AdminPortal.Web.Pages.Assets
         [BindProperty]
 		public string PostalCode { get; set; }
 
-        public void OnGet(string id)
+        public void OnGet(string zip)
 		{
-            PostalCode = id;
+            PostalCode = zip;
 		}
 
     }

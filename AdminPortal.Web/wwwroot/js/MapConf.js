@@ -1,4 +1,5 @@
 ﻿let map;
+let marker = [];
 
 function initMap() {
 	if (map == null) {
@@ -6,10 +7,13 @@ function initMap() {
 			center: { lat: 28.644800, lng: 77.216721 },
 			zoom: 8,
 		});
+		if (marker.length > 0) {
+			marker.forEach(setMarker(latLng));
+		}
 	}
 }
 
-function getLatLngByZipcode(zipcode, callback) {
+function setLatLng(zipcode, callback) {
 	let geocoder = new google.maps.Geocoder();
 	geocoder.geocode(
 		{ address: zipcode },
@@ -25,23 +29,22 @@ function getLatLngByZipcode(zipcode, callback) {
 }
 
 function moveToLoc(zipcode) {
-	getLatLngByZipcode(zipcode, function (latLng) {
+	setLatLng(zipcode, function (latLng) {
 		map.setCenter(latLng);
 		map.setZoom(16);
 	});
 }
 
-function setMarker(zipcode) {
-	zipcode = '411038';
-	debugger;
+function markLocation(zipcode) {
 	alert(zipcode);
-	getLatLngByZipcode(zipcode, function (latLng) {
-		let marker = new google.maps.Marker({
-			position: latLng,
-			title: "This is an installation"
-		});
-		map.setMarker(latLng);
-		map.setCenter(latLng);
-		map.setZoom(16);
+	setLatLng(zipcode, function (latLng) {
+		marker.push(latLng);
 	});
+}
+
+function setMarker(latLng) {
+	marker = new google.maps.Marker({
+		position: latLng,
+	});
+	marker.setMap(map);
 }
