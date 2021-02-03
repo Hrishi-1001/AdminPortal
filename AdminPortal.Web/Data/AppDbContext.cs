@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Data
 {
-	public class AssetDbContext : DbContext
+	public class AppDbContext : DbContext
 	{
-		public AssetDbContext(DbContextOptions<AssetDbContext> options):
+		public AppDbContext(DbContextOptions<AppDbContext> options):
 			base(options)
 		{ }
 
 		public DbSet<Asset> Assets { get; set; }
+		public DbSet<Location> Locations { get; set; }
 	}
 }

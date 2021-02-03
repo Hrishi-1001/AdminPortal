@@ -12,8 +12,9 @@ namespace AdminPortal.Web.Pages.Partials
 		[BindProperty]
 		public string ID { get; set; }
 
-		public void OnGet()
+		public void OnGetID()
         {
+
         }
     }
 }

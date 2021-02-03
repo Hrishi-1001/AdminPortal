@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject InjectionService.LocationDbContextService LocationDbService
+
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
 	<meta charset="utf-8" />
@@ -16,6 +18,17 @@
 		}
 	</style>
 
+	<script type="text/javascript">
+		function initMap() {
+			new google.maps.Map(document.getElementById("map"), {
+				center: { lat: 28.644800, lng: 77.216721 },
+				zoom: 8,
+			});
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNP8qLyU6qxfS49mZ4O9n4JQrSbc8p-EM&callback=initMap&libraries=&v=weekly"
+			defer></script>
+
 </head>
 <body>
 	<header id="header" style="margin-bottom: 1%;">
@@ -30,7 +43,10 @@
 		<div class="d-flex flex-row">
 			<partial name="Partials/SidebarPartial" model="new Partials.SidebarPartialModel()" />
 			<div id="render-div" class="d-flex flex-column" style="margin-left: 0.5%; width: 100%;">
-				<partial name="Partials/SearchPartial" model="new Partials.SearchPartialModel()" />
+				<div class="d-flex flex-row" style="justify-content: space-between;">
+					<partial name="Partials/SelectLoc" model="new Partials.SelectLocModel(new System.Net.Http.HttpClient(), LocationDbService.Adopt()) " />
+					<partial name="Partials/SearchPartial" model="new Partials.SearchPartialModel()" />
+				</div>
 				<main id="main" class="pb-3" role="main" style="width: 100%;">
 					@RenderBody()
 				</main>

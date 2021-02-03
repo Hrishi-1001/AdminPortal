@@ -7,9 +7,9 @@ namespace AdminPortal.Web.Pages.Assets
 {
 	public class CreateModel : PageModel
 	{
-		private readonly AdminPortal.Web.Data.AssetDbContext _context;
+		private readonly Data.AppDbContext _context;
 
-		public CreateModel(AdminPortal.Web.Data.AssetDbContext context)
+		public CreateModel(Data.AppDbContext context)
 		{
 			_context = context;
 		}

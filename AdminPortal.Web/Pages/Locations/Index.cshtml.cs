@@ -8,22 +8,22 @@ using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
 
-namespace AdminPortal.Web.Pages.Assets
+namespace AdminPortal.Web.Pages.Locations
 {
     public class IndexModel : PageModel
     {
-        private readonly AdminPortal.Web.Data.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public IndexModel(AdminPortal.Web.Data.AppDbContext context)
+        public IndexModel(AppDbContext context)
         {
             _context = context;
         }
 
-        public IList<Asset> Asset { get;set; }
+        public IList<Location> Location { get;set; }
 
         public async Task OnGetAsync()
         {
-            Asset = await _context.Assets.ToListAsync();
+            Location = await _context.Locations.ToListAsync();
         }
     }
 }

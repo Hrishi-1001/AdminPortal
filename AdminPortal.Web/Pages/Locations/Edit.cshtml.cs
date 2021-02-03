@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
 
-namespace AdminPortal.Web.Pages.Assets
+namespace AdminPortal.Web.Pages.Locations
 {
     public class EditModel : PageModel
     {
@@ -21,18 +21,18 @@ namespace AdminPortal.Web.Pages.Assets
         }
 
         [BindProperty]
-        public Asset Asset { get; set; }
+        public Location Location { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Asset = await _context.Assets.FirstOrDefaultAsync(m => m.ID == id);
+            Location = await _context.Locations.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Asset == null)
+            if (Location == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace AdminPortal.Web.Pages.Assets
                 return Page();
             }
 
-            _context.Attach(Asset).State = EntityState.Modified;
+            _context.Attach(Location).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace AdminPortal.Web.Pages.Assets
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AssetExists(Asset.ID))
+                if (!LocationExists(Location.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace AdminPortal.Web.Pages.Assets
             return RedirectToPage("./Index");
         }
 
-        private bool AssetExists(string id)
+        private bool LocationExists(int id)
         {
-            return _context.Assets.Any(e => e.ID == id);
+            return _context.Locations.Any(e => e.ID == id);
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
 
-namespace AdminPortal.Web.Pages.Assets
+namespace AdminPortal.Web.Pages.Locations
 {
     public class DeleteModel : PageModel
     {
@@ -20,36 +20,36 @@ namespace AdminPortal.Web.Pages.Assets
         }
 
         [BindProperty]
-        public Asset Asset { get; set; }
+        public Location Location { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Asset = await _context.Assets.FirstOrDefaultAsync(m => m.ID == id);
+            Location = await _context.Locations.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Asset == null)
+            if (Location == null)
             {
                 return NotFound();
             }
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Asset = await _context.Assets.FindAsync(id);
+            Location = await _context.Locations.FindAsync(id);
 
-            if (Asset != null)
+            if (Location != null)
             {
-                _context.Assets.Remove(Asset);
+                _context.Locations.Remove(Location);
                 await _context.SaveChangesAsync();
             }
 
