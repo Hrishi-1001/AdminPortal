@@ -4,11 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
-using AdminPortal.Web.Pages.Assets;
 using System.Net.Http;
-using AdminPortal.Web.InjectionService;
 
 namespace AdminPortal.Web
 {
@@ -25,12 +22,12 @@ namespace AdminPortal.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
-			services.AddSingleton<HttpClient>();
-			services.AddDbContext<AppDbContext>(options => 
-				options.UseSqlServer(Configuration.GetConnectionString("AssetDbContext")));
-		    services.AddDbContext<AppDbContext>(options =>
-		            options.UseSqlServer(Configuration.GetConnectionString("LocationDbContext")));
-			services.AddTransient<LocationDbContextService>();
+
+			services.AddDbContext<Data.DatabaseContext>(options =>
+				options.UseSqlServer(Configuration.GetConnectionString
+				("LocalDatabase")));
+			
+			services.AddTransient<Services.DbService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,4 @@
-﻿@inject InjectionService.LocationDbContextService LocationDbService
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
 <head>
 	<meta charset="utf-8" />
@@ -9,44 +7,16 @@
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" />
 
-	<style>
-
-		.sidebar {
-			height: 100%;
-			width: 30%;
-			margin-right: 0.5%;
-		}
-	</style>
-
-	<script type="text/javascript">
-		function initMap() {
-			new google.maps.Map(document.getElementById("map"), {
-				center: { lat: 28.644800, lng: 77.216721 },
-				zoom: 8,
-			});
-		}
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNP8qLyU6qxfS49mZ4O9n4JQrSbc8p-EM&callback=initMap&libraries=&v=weekly"
-			defer></script>
-
 </head>
 <body>
 	<header id="header" style="margin-bottom: 1%;">
 		<div class="bg-light d-flex flex-row-reverse navbar-brand">
-			<a asp-page="/Alerts" class="btn btn-primary nav-link" role="button">Alerts</a>
-			<a asp-page="/Assets/Index" class="btn btn-primary nav-link" role="button">List View</a>
-			<a asp-page="/Map" class="btn btn-primary nav-link" role="button">Map</a>
 		</div>
 	</header>
 
 	<div class="container-fluid">
 		<div class="d-flex flex-row">
-			<partial name="Partials/SidebarPartial" model="new Partials.SidebarPartialModel()" />
 			<div id="render-div" class="d-flex flex-column" style="margin-left: 0.5%; width: 100%;">
-				<div class="d-flex flex-row" style="justify-content: space-between;">
-					<partial name="Partials/SelectLoc" model="new Partials.SelectLocModel(new System.Net.Http.HttpClient(), LocationDbService.Adopt()) " />
-					<partial name="Partials/SearchPartial" model="new Partials.SearchPartialModel()" />
-				</div>
 				<main id="main" class="pb-3" role="main" style="width: 100%;">
 					@RenderBody()
 				</main>
@@ -56,7 +26,7 @@
 
 	<footer style="margin-top: 1%;">
 		<div class="d-flex flex-row-reverse" style="width: 100%;">
-			<a asp-page="/Map" class="btn btn-primary" style="background-color: darkred;">Sign Out</a>
+			
 		</div>
 	</footer>
 

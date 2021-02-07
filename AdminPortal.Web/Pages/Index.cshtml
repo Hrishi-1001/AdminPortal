@@ -1,0 +1,41 @@
+﻿@page
+@model AdminPortal.Web.Pages.IndexModel
+@inject Services.DbService dbService
+
+
+<script type="text/javascript">
+	var map;
+	function initMap() {
+		map = new google.maps.Map(document.getElementById("map"), {
+			center: { lat: @Model.DefaultLatitude , lng: @Model.DefaultLongitude },
+			zoom: @Model.DefaultZoom,
+		});
+		@foreach (var asset in dbService.Assets)
+		{
+				@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
+		}
+	}
+
+	function getIconByState(state) {
+		if (state == 'non_functional') {
+			return 'non-functional.png';
+		}
+		else if (state == 'under_maintenance') {
+			return 'under-maintenance.png';
+		}
+		else if (state == 'functional') {
+			return 'functional.png';
+		}
+	}
+
+	function setMarker(lat, lng, state) {
+		var markerjs = new google.maps.Marker({
+			icon: getIconByState(state),
+			position: new google.maps.LatLng(lat, lng),
+		});
+		markerjs.setMap(map);
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNP8qLyU6qxfS49mZ4O9n4JQrSbc8p-EM&callback=initMap&libraries=&v=weekly"
+		defer></script>
+<div id="map" style="height: 500px;"></div>
