@@ -14,7 +14,7 @@
 		@foreach (var asset in dbService.Assets)
 		{
 			@:debugger;
-			@:parameters = 'Temperature = @asset.Temperature\n' + 'moisture = @asset.Moisture\n';
+			@:parameters = 'Temperature = @asset.Temperature\n' + 'Moisture = @asset.Moisture\n';
 			@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
 		}
 	}
