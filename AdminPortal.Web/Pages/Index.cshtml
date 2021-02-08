@@ -4,7 +4,8 @@
 
 
 <script type="text/javascript">
-	var map;
+	let map;
+	let parameters;
 	function initMap() {
 		map = new google.maps.Map(document.getElementById("map"), {
 			center: { lat: @Model.DefaultLatitude , lng: @Model.DefaultLongitude },
@@ -12,7 +13,9 @@
 		});
 		@foreach (var asset in dbService.Assets)
 		{
-				@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
+			@:debugger;
+			@:parameters = 'Temperature = @asset.Temperature\n' + 'moisture = @asset.Moisture\n';
+			@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
 		}
 	}
 
@@ -29,13 +32,20 @@
 	}
 
 	function setMarker(lat, lng, state) {
+
 		var markerjs = new google.maps.Marker({
 			icon: getIconByState(state),
 			position: new google.maps.LatLng(lat, lng),
 		});
 		markerjs.setMap(map);
+		let infowindow = new google.maps.InfoWindow({
+			content: parameters,
+		});
+		markerjs.addListener("click", () => {
+			infowindow.open(map, markerjs);
+		});
 	}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNP8qLyU6qxfS49mZ4O9n4JQrSbc8p-EM&callback=initMap&libraries=&v=weekly"
 		defer></script>
-<div id="map" style="height: 500px;"></div>
+<div id="map" style="height: 700px;"></div>

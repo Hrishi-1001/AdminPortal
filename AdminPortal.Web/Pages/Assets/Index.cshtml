@@ -1,0 +1,72 @@
+﻿@page
+@model AdminPortal.Web.Pages.Assets.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].AssetID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].Temperature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assets[0].Moisture)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Assets) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moisture)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AssetID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AssetID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AssetID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
