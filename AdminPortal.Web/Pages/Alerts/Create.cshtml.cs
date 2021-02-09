@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
 
-namespace AdminPortal.Web.Pages.Assets
+namespace AdminPortal.Web.Pages.Alerts
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace AdminPortal.Web.Pages.Assets
         }
 
         [BindProperty]
-        public Asset Asset { get; set; }
+        public Alert Alert { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,17 +35,7 @@ namespace AdminPortal.Web.Pages.Assets
                 return Page();
             }
 
-            Asset.State = AssetState.functional;
-            Asset.Moisture = 0.2m;
-            Asset.Temperature = 26.4m;
-
-            Alert alert = new Alert();
-            alert.Text = "New Asset Added";
-            _context.Assets.Add(Asset);
-            await _context.SaveChangesAsync();
-
-            alert.AssetID = Asset.AssetID;
-            _context.Alerts.Add(alert);
+            _context.Alerts.Add(Alert);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
