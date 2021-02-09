@@ -49,7 +49,11 @@ namespace AdminPortal.Web.Pages.Assets
 
             if (Asset != null)
             {
-                _context.Assets.Remove(Asset);
+                Asset.State = AssetState.deleted;
+                Alert alert = new Alert();
+                alert.AssetID = Asset.AssetID;
+                alert.Text = $"Asset {Asset.AssetID} has been scrapped";
+                _context.Alerts.Add(alert);
                 await _context.SaveChangesAsync();
             }
 

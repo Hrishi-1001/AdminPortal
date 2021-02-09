@@ -19,8 +19,11 @@ namespace AdminPortal.Web.Pages.Alerts
             _context = context;
         }
 
-        public IActionResult OnGet()
+		public static int ID { get; set; }
+
+		public IActionResult OnGet(int id)
         {
+            ID = id;
             return Page();
         }
 
@@ -28,14 +31,14 @@ namespace AdminPortal.Web.Pages.Alerts
         public Alert Alert { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            Alert.AssetID = id;
+            Alert.AssetID = ID;
 
             _context.Alerts.Add(Alert);
             await _context.SaveChangesAsync();

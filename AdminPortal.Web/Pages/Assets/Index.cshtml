@@ -52,12 +52,16 @@
                 @Html.DisplayFor(modelItem => item.Moisture)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.AssetID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AssetID">Details</a> |
-                <a asp-page="../Alerts/Create" 
-                   asp-route-id="id">Create Alert</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AssetID"
-                   style="color: darkred;">Delete</a>
+                @if (item.State != Models.AssetState.deleted)
+				{
+                    <a asp-page="./Edit" asp-route-id="@item.AssetID">Edit</a>
+                    <label> | </label>
+                    <a asp-page="./Details" asp-route-id="@item.AssetID">Details</a>
+                    <label> | </label>
+                    <a asp-page="/Alerts/Create" asp-route-id=@item.AssetID>Create Alert</a>
+                    <label> | </label>
+                    <a asp-page="./Delete" asp-route-id="@item.AssetID" style="color: darkred;">Delete</a>
+				}
             </td>
         </tr>
 }

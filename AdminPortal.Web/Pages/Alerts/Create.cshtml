@@ -1,4 +1,4 @@
-﻿@page "{id:int}"
+﻿@page "/Assets/Create/{id:int}"
 @model AdminPortal.Web.Pages.Alerts.CreateModel
 
 @{
@@ -9,7 +9,7 @@
 
 <h4>Alert</h4>
 <hr />
-<label class="control-label"></label>
+<label class="control-label">@CreateModel.ID</label>
 <div class="row">
 	<div class="col-md-4">
 		<form method="post">

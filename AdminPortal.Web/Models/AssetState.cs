@@ -9,6 +9,8 @@ namespace AdminPortal.Web.Models
 		[Display(Name = "Under-Maintenance")]
 		under_maintenance,
 		[Display(Name = "Functional")]
-		functional
+		functional,
+		[Display(Name = "Deleted")]
+		deleted,
 	}
 }
