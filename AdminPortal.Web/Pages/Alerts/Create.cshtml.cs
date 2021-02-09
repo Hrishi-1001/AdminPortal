@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AdminPortal.Web.Data;
 using AdminPortal.Web.Models;
 
-namespace AdminPortal.Web.Pages.Alerts
+namespace AdminPortal.Web.Pages.Alerts  
 {
     public class CreateModel : PageModel
     {
@@ -28,12 +28,14 @@ namespace AdminPortal.Web.Pages.Alerts
         public Alert Alert { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+
+            Alert.AssetID = id;
 
             _context.Alerts.Add(Alert);
             await _context.SaveChangesAsync();

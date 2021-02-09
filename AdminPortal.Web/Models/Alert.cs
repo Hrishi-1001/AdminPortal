@@ -15,7 +15,6 @@ namespace AdminPortal.Web.Models
 		[DataType(DataType.MultilineText)]
 		public string Text { get; set; }
 
-		[ForeignKey("AssetID")]
 		public int AssetID { get; set; }
 	}
 }
