@@ -8,6 +8,8 @@ namespace AdminPortal.Web.Models
 {
 	public class Location
 	{
+		[Display(Name = "Postal Code")]
+		public string ZIP { get; set; }
 		[Display(Name = "Location")]
 		public string Name { get; set; }
 		[Display(Name = "Latitude")]

@@ -15,5 +15,6 @@ namespace AdminPortal.Web.Data
 
 		public DbSet<Models.Asset> Assets { get; set; }
 		public DbSet<Models.Alert> Alerts { get; set; }
+		public DbSet<Models.Location> Locations { get; set; }
 	}
 }

@@ -13,7 +13,7 @@ namespace AdminPortal.Web.Models
 		[Key]
 		public int AssetID { get; set; }
 
-		public string Area { get; set; }
+		public Location Area { get; set; }
 		public double Latitude { get; set; }
 		public double Longitude { get; set; }
 		
