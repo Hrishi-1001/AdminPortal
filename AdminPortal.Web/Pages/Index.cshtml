@@ -13,9 +13,11 @@
 		});
 		@foreach (var asset in dbService.Assets)
 		{
-			@:debugger;
-			@:parameters = 'Temperature = @asset.Temperature\n' + 'Moisture = @asset.Moisture\n';
-			@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
+			@if (asset.State != Models.AssetState.deleted)
+			{
+				@:parameters = 'Temperature = @asset.Temperature\n' + 'Moisture = @asset.Moisture\n';
+				@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
+			}
 		}
 	}
 
