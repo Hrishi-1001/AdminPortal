@@ -19,11 +19,24 @@ namespace AdminPortal.Web.Pages.Assets
             _context = context;
         }
 
-        public IList<Asset> Assets { get;set; }
+        [BindProperty]
+		public string SearchString { get; set; }
 
-        public async Task OnGetAsync()
+		public IList<Asset> Assets { get;set; }
+
+        public async Task OnGetAsync(int? SearchString)
         {
-            Assets = await _context.Assets.ToListAsync();
+            if (SearchString == null)
+			{
+                Assets = await _context.Assets.ToListAsync();
+			}
+            else
+			{
+                Assets = (from assets in _context.Assets.ToList()
+                         where assets.AssetID == SearchString
+                         select assets).ToList();
+
+            }
         }
     }
 }
