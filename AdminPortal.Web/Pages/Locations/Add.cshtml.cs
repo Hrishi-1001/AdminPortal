@@ -38,7 +38,7 @@ namespace AdminPortal.Web.Pages.Locations
             _context.Locations.Add(Location);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Assets/Create", "Location", Location.ZIP);
         }
     }
 }

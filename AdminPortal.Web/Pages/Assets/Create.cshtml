@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Assets/Create/{zip?}"
 @model AdminPortal.Web.Pages.Assets.CreateModel
 
 @{
@@ -13,11 +13,13 @@
 	<div class="col-md-4">
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div class="form-group">
+			<div class="d-flex flex-row form-group">
 				<select asp-for="Asset.Area" asp-items="Model.Locations"
 						class="btn btn-secondary" style="background-color: blueviolet;">
 					<option value="0">select area</option>
 				</select>
+				<a asp-page="/Locations/Add" class="btn btn-secondary" 
+				   style="background-color: blueviolet; width: 10%;">+</a>
 			</div>
 			<div class="form-group">
 				<label asp-for="Asset.Latitude" class="control-label"></label>

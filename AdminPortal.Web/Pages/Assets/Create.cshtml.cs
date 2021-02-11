@@ -13,22 +13,36 @@ namespace AdminPortal.Web.Pages.Assets
 	public class CreateModel : PageModel
 	{
 		private readonly AdminPortal.Web.Data.DatabaseContext _context;
-		public Location Location { get; set; }
-		public IList<SelectListItem> Locations { get; set; }
+		public List<SelectListItem> Locations { get; }
 
-		public CreateModel(AdminPortal.Web.Data.DatabaseContext context)
+		public CreateModel(DatabaseContext context, List<SelectListItem> items)
 		{
 			_context = context;
+			Locations = items;
 		}
 
 		public IActionResult OnGet()
 		{
-			Locations = new List<SelectListItem>();
 			foreach (var location in _context.Locations)
 			{
-				Locations.Add(new SelectListItem { 
+				Locations.Add(new SelectListItem 
+				{ 
 					Value = location.ZIP,
 					Text = location.Name,
+				});
+			}
+			return Page();
+		}
+
+		public IActionResult OnGetLocation(string zip)
+		{
+			foreach (var location in _context.Locations)
+			{
+				Locations.Add(new SelectListItem
+				{
+					Value = location.ZIP,
+					Text = location.Name,
+					Selected = (location.ZIP == zip ? true : false),
 				});
 			}
 			return Page();
@@ -44,21 +58,35 @@ namespace AdminPortal.Web.Pages.Assets
 			{
 				return Page();
 			}
-			Asset.Area = Location.Name;
+			await AssignValues();
+			return RedirectToPage("./Index");
+		}
+
+		private async Task AssignValues()
+		{
+			foreach (var location in _context.Locations)
+			{
+				Locations.Add(new SelectListItem
+				{
+					Value = location.ZIP,
+					Text = location.Name,
+				});
+			}
+			Asset.Area = (from location in Locations
+							where location.Value.Equals(Asset.Area)
+							select location.Text).First();
 			Asset.State = AssetState.functional;
 			Asset.Moisture = 0.2m;
 			Asset.Temperature = 26.4m;
 
 			Alert alert = new Alert();
 			alert.Text = "New Asset Added";
+			alert.AssetID = Asset.AssetID;
 			_context.Assets.Add(Asset);
 			await _context.SaveChangesAsync();
 
-			alert.AssetID = Asset.AssetID;
 			_context.Alerts.Add(alert);
 			await _context.SaveChangesAsync();
-
-			return RedirectToPage("./Index");
 		}
 	}
 }

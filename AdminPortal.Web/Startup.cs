@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AdminPortal.Web.Models;
 using System.Net.Http;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdminPortal.Web
 {
@@ -22,6 +24,8 @@ namespace AdminPortal.Web
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
+
+			services.AddScoped<List<SelectListItem>>();
 
 			services.AddDbContext<Data.DatabaseContext>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString
