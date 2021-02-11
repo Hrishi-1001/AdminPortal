@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Models
 {
+	[Display(Name = "Area")]
 	public class Location
 	{
+		[Key]
 		[Display(Name = "Postal Code")]
 		public string ZIP { get; set; }
 		[Display(Name = "Location")]
