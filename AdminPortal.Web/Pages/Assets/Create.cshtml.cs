@@ -87,6 +87,8 @@ namespace AdminPortal.Web.Pages.Assets
 
 			_context.Alerts.Add(alert);
 			await _context.SaveChangesAsync();
+
+			
 		}
 	}
 }
