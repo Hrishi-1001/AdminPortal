@@ -13,16 +13,16 @@ namespace AdminPortal.Web.Pages.Assets
 	public class CreateModel : PageModel
 	{
 		private readonly AdminPortal.Web.Data.DatabaseContext _context;
-		public List<SelectListItem> Locations { get; }
+		public IList<SelectListItem> Locations { get; set; }
 
-		public CreateModel(DatabaseContext context, List<SelectListItem> items)
+		public CreateModel(DatabaseContext context)
 		{
 			_context = context;
-			Locations = items;
 		}
 
 		public IActionResult OnGet()
 		{
+			Locations = new List<SelectListItem>();
 			foreach (var location in _context.Locations)
 			{
 				Locations.Add(new SelectListItem 
@@ -36,6 +36,7 @@ namespace AdminPortal.Web.Pages.Assets
 
 		public IActionResult OnGetLocation(string zip)
 		{
+			Locations = new List<SelectListItem>();
 			foreach (var location in _context.Locations)
 			{
 				Locations.Add(new SelectListItem
