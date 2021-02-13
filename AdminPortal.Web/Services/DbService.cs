@@ -17,6 +17,6 @@ namespace AdminPortal.Web.Services
 		}
 
 		public DbSet<Models.Asset> Assets { get => databaseContext.Assets; }
-
+		public DbSet<Models.Location> Locations { get => databaseContext.Locations; }
 	}
 }

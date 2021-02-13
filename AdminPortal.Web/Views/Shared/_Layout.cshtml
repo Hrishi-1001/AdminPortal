@@ -8,15 +8,15 @@
 	<link rel="stylesheet" href="~/css/site.css" />
 
 </head>
-<body>
+<body>	
 	<header id="header" style="margin-bottom: 1%;">
 		<nav class="navbar bg-light d-flex flex-row">
-			<a asp-page="/Index" class="navbar-brand" 
+			<a asp-action="Index" asp-controller="Home" class="navbar-brand" 
 				style="color: blue; margin-left: 1%;">Map</a>
 			<div class="d-flex flex-row nav-tabs">
-				<a asp-page="/Assets/Index" class="btn btn-secondary"
+				<a asp-action="Index" asp-controller="Assets" class="btn btn-secondary"
 				   style="background-color: blue; margin-left: 1%;">List</a>
-				<a asp-page="/Alerts/Index" class="btn btn-secondary"
+				<a asp-action="Index" asp-controller="Alerts" class="btn btn-secondary"
 				   style="background-color: blue; margin-left: 1%">Alerts</a>
 			</div>
 		</nav>

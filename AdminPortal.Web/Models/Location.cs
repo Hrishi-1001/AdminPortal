@@ -9,14 +9,15 @@ namespace AdminPortal.Web.Models
 	[Display(Name = "Area")]
 	public class Location
 	{
-		[Key]
 		[Display(Name = "Postal Code")]
-		public string ZIP { get; set; }
+		public int Id { get; set; }
 		[Display(Name = "Location")]
 		public string Name { get; set; }
 		[Display(Name = "Latitude")]
 		public double Latitude { get; set; }
 		[Display(Name = "Longitude")]
 		public double Longitude { get; set; }
+		
+		public IList<Asset> Assets { get; set; }
 	}
 }

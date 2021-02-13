@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminPortal.Web.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210210124945_LocationAdd")]
-    partial class LocationAdd
+    [Migration("20210213122313_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,11 +18,11 @@ namespace AdminPortal.Web.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.3");
 
             modelBuilder.Entity("AdminPortal.Web.Models.Alert", b =>
                 {
-                    b.Property<int>("AlertID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -33,14 +33,16 @@ namespace AdminPortal.Web.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AlertID");
+                    b.HasKey("ID");
+
+                    b.HasIndex("AssetID");
 
                     b.ToTable("Alerts");
                 });
 
             modelBuilder.Entity("AdminPortal.Web.Models.Asset", b =>
                 {
-                    b.Property<int>("AssetID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -48,11 +50,8 @@ namespace AdminPortal.Web.Migrations
                     b.Property<string>("Area")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Moisture")
                         .HasColumnType("decimal(18,2)");
@@ -63,15 +62,19 @@ namespace AdminPortal.Web.Migrations
                     b.Property<decimal>("Temperature")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("AssetID");
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Assets");
                 });
 
             modelBuilder.Entity("AdminPortal.Web.Models.Location", b =>
                 {
-                    b.Property<string>("ZIP")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<double>("Latitude")
                         .HasColumnType("float");
@@ -82,9 +85,41 @@ namespace AdminPortal.Web.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ZIP");
+                    b.HasKey("Id");
 
                     b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("AdminPortal.Web.Models.Alert", b =>
+                {
+                    b.HasOne("AdminPortal.Web.Models.Asset", "Asset")
+                        .WithMany("Alerts")
+                        .HasForeignKey("AssetID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Asset");
+                });
+
+            modelBuilder.Entity("AdminPortal.Web.Models.Asset", b =>
+                {
+                    b.HasOne("AdminPortal.Web.Models.Location", "Location")
+                        .WithMany("Assets")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("AdminPortal.Web.Models.Asset", b =>
+                {
+                    b.Navigation("Alerts");
+                });
+
+            modelBuilder.Entity("AdminPortal.Web.Models.Location", b =>
+                {
+                    b.Navigation("Assets");
                 });
 #pragma warning restore 612, 618
         }

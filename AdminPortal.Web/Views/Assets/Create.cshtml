@@ -1,0 +1,59 @@
+﻿@model AdminPortal.Web.Models.Asset
+@inject Services.DbService dbService
+
+@{
+	ViewData["Title"] = "Create";
+
+	List<SelectListItem> selectListItems = new List<SelectListItem>();
+	foreach (var location in dbService.Locations.ToList())
+	{
+		selectListItems.Add(new SelectListItem
+		{
+			Text = location.Name,
+			Value = location.Id.ToString(),
+			Selected = (location.Id.ToString() == Model.Area ? true : false)
+		});
+	}
+
+}
+
+<h1>Create</h1>
+
+<h4>Asset</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="d-flex flex-row form-group">
+				<select asp-for="Area" asp-items="selectListItems" class="custom-select">
+					<option value="0">Select you choice</option>
+				</select>
+				<a asp-action="Add" asp-controller="Locations" class="btn btn-secondary"
+					   style="background-color: blueviolet; width: 10%;">+</a>
+				<span asp-validation-for="Area" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Location.Latitude" class="control-label"></label>
+				<input asp-for="Location.Latitude" class="form-control" />
+				<span asp-validation-for="Location.Latitude" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Location.Longitude" class="control-label"></label>
+				<input asp-for="Location.Longitude" class="form-control" />
+				<span asp-validation-for="Location.Longitude" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

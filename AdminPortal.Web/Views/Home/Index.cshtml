@@ -1,5 +1,4 @@
-﻿@page
-@model AdminPortal.Web.Pages.IndexModel
+﻿@model AdminPortal.Web.Models.Map
 @inject Services.DbService dbService
 
 
@@ -16,7 +15,7 @@
 			@if (asset.State != Models.AssetState.deleted)
 			{
 				@:parameters = 'Temperature = @asset.Temperature\n' + 'Moisture = @asset.Moisture\n';
-				@:setMarker('@asset.Latitude', '@asset.Longitude', '@asset.State');
+				@:setMarker('@asset.Location.Latitude', '@asset.Location.Longitude', '@asset.State');
 			}
 		}
 	}
