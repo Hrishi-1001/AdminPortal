@@ -9,16 +9,23 @@ namespace AdminPortal.Web.Models
 {
 	public class Asset
 	{
+		[Display(Name = "Asset ID")]
 		public int Id { get; set; }
+		
+		[Display(Name = "Area")]
 		public string Area { get; set; }
+
+		[Display(Name = "State")]
 		public AssetState State { get; set; }
 
+		[Display(Name = "Current Temperature")]
 		public decimal Temperature { get; set; }
+		
+		[Display(Name = "Current Mosture")]
 		public decimal Moisture { get; set; }
 
 		public IList<Alert> Alerts { get; set; }
 
-		[Display(Name = "Area")]
 		public Location Location { get; set; }
 
 		[DataType(DataType.PostalCode)]

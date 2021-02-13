@@ -9,7 +9,7 @@ namespace AdminPortal.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-		[Route("/")]
+		[Route("/Home")]
 		public IActionResult Index(Map map)
 		{
 			return View(map);

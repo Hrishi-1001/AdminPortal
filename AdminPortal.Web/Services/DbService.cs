@@ -16,7 +16,8 @@ namespace AdminPortal.Web.Services
 			this.databaseContext = databaseContext;
 		}
 
-		public DbSet<Models.Asset> Assets { get => databaseContext.Assets; }
-		public DbSet<Models.Location> Locations { get => databaseContext.Locations; }
+		public IList<Models.Alert> Alerts{ get => databaseContext.Alerts.ToList(); }
+		public IList<Models.Asset> Assets { get => databaseContext.Assets.ToList(); }
+		public IList<Models.Location> Locations { get => databaseContext.Locations.ToList(); }
 	}
 }

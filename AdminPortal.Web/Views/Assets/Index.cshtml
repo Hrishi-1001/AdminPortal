@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Models.Asset>
+@{ 
+	ViewData["Title"] = "List";
+}
+
+<form asp-action="Index" asp-controller="Assets" method="get">
+	<div class="form-group">
+		<div class="d-flex flex-row input-group">
+			<input class="form-control" placeholder="Enter ID" />
+			<input class="btn btn-secondary" name="SearchString" 
+				   style="background-color: blueviolet; width: 10%;" 
+				   type="submit" value="Search" />
+		</div>
+	</div>
+</form>
+
+<table class="table">
+	<thead class="thead-light">
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.First().Id)</th>
+			<th>@Html.DisplayNameFor(model => model.First().Area)</th>
+			<th>@Html.DisplayNameFor(model => model.First().State)</th>
+			<th>@Html.DisplayNameFor(model => model.First().Temperature)</th>
+			<th>@Html.DisplayNameFor(model => model.First().Moisture)</th>
+			<th>@Html.DisplayNameFor(model => model.First().Alerts)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var asset in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(item => asset.Id)</td>
+				<td>@Html.DisplayFor(item => asset.Area)</td>
+				<td>@Html.DisplayFor(item => asset.State)</td>
+				<td>@Html.DisplayFor(item => asset.Temperature)</td>
+				<td>@Html.DisplayFor(item => asset.Moisture)</td>
+				<td>@Html.DisplayFor(item => asset.Alerts.Count)</td>
+			</tr>
+		}
+	</tbody>
+</table>
