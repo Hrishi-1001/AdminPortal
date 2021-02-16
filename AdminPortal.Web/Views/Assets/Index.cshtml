@@ -40,7 +40,7 @@
 				<td>@Html.DisplayFor(item => asset.Moisture)</td>
 				<td>@Html.DisplayFor(item => asset.Alerts.Count)</td>
 				<td>
-					<a asp-action="Delete" class="alert-link" name="id" style="color: darkred">Delete</a>
+					<a asp-action="Delete" asp-route-id="@asset.Id" class="btn-link" style="color: darkred">Delete</a>
 				</td>
 			</tr>
 		}
