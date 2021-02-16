@@ -1,5 +1,15 @@
 ﻿@model IList<Models.Alert>
 
+<form asp-action="Index" asp-controller="Alerts" method="get" style="width: 30%;">
+	<div class="form-group">
+		<div class="d-flex flex-row input-group">
+			<input class="form-control" name="id" placeholder="Enter ID" type="number" />
+			<input class="btn btn-secondary" style="background-color: blueviolet; width: 20%;"
+					type="submit" value="Search" />
+		</div>
+	</div>
+</form>
+
 <table class="table">
 	<thead class="thead-light">
 		<tr>

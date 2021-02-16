@@ -22,10 +22,10 @@ namespace AdminPortal.Web.Controllers
 		[Route("/Alerts/{id}")]
 		public async Task<IActionResult> Index(string id = null)
 		{
-			IQueryable<Alert> list = databaseContext.Alerts.Include(o => o.Asset);
+			IQueryable<Alert> list = databaseContext.Alerts.Include(o => o.Asset).Include(o => o.Asset.Location);
 			if (!string.IsNullOrEmpty(id))
 			{
-				list = list.Where(o => o.ID.ToString().Equals(id));
+				list = list.Where(o => o.AssetID.ToString().Contains(id));
 			}
 			return View(await list.ToListAsync());
 		}

@@ -2,7 +2,6 @@
 using AdminPortal.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,6 +29,7 @@ namespace AdminPortal.Web.Controllers
 			return View(await list.ToListAsync());
 		}																						
 
+		[Route("/Assets/create")]
 		public IActionResult Create()
 		{
 			return View();
@@ -61,7 +61,7 @@ namespace AdminPortal.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var purgeAsset =  await databaseContext.Assets.Where(asset => asset.Id.Equals(id)).
+				Asset purgeAsset =  await databaseContext.Assets.Where(asset => asset.Id.Equals(id)).
 					FirstOrDefaultAsync();
 				databaseContext.Assets.Remove(purgeAsset);
 				await databaseContext.SaveChangesAsync();
