@@ -57,15 +57,23 @@ namespace AdminPortal.Web.Controllers
 			return View(asset);
 		}
 
-		public async Task Delete(int id)
+		[Route("/Assets/Delete/{id}")]
+		public async Task<IActionResult> Delete(int id)
 		{
 			if (ModelState.IsValid)
 			{
 				Asset purgeAsset =  await databaseContext.Assets.Where(asset => asset.Id.Equals(id)).
 					FirstOrDefaultAsync();
-				databaseContext.Assets.Remove(purgeAsset);
+				purgeAsset.State = AssetState.deleted;
+				databaseContext.Alerts.Add(new Alert
+				{
+					AssetID = purgeAsset.Id,
+					Text = "Asset Deleted",
+				});
 				await databaseContext.SaveChangesAsync();
+				return RedirectToAction("Index");
 			}
+			return RedirectToAction("Index");
 		}
 	}
 }
