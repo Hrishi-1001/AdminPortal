@@ -11,14 +11,8 @@ namespace AdminPortal.Web.Models
 		[DataType(DataType.PostalCode)]
 		public int Id { get; set; }
 		
-		[Display(Name = "Name")]
+		[Display(Name = "Area")]
 		public string Name { get; set; }
-
-		[Display(Name = "Latitude")]
-		public double Latitude { get; set; }
-
-		[Display(Name = "Longitude")]
-		public double Longitude { get; set; }
 
 		public IList<Asset> Assets { get; set; }
 	}

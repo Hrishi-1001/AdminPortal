@@ -11,9 +11,6 @@ namespace AdminPortal.Web.Models
 	{
 		[Display(Name = "Asset ID")]
 		public int Id { get; set; }
-		
-		[Display(Name = "Area")]
-		public string Area { get; set; }
 
 		[Display(Name = "State")]
 		public AssetState State { get; set; }
@@ -36,6 +33,5 @@ namespace AdminPortal.Web.Models
 
 		[Display(Name = "Longitude")]
 		public double Longitude { get; set; }
-
 	}
 }

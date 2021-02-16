@@ -1,6 +1,9 @@
 ﻿using AdminPortal.Web.Data;
+using AdminPortal.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,17 +18,54 @@ namespace AdminPortal.Web.Controllers
 			this.databaseContext = databaseContext;
 		}
 
-		[Route("/Assets/Index")]
-		[Route("/Assets/Index/{searchString?}")]
+		[Route("/Assets")]
+		[Route("/Assets/{searchString}")]
 		public async Task<IActionResult> Index(string searchString)
 		{
-			var list = from assets in databaseContext.Assets
-						select assets;
+			IQueryable<Asset> list = databaseContext.Assets.Include(o => o.Location).Include(o => o.Alerts);
 			if (!string.IsNullOrEmpty(searchString))
 			{
 				list = list.Where(asset => asset.Id.ToString().Contains(searchString));
 			}
 			return View(await list.ToListAsync());
+		}																						
+
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		[Route("/Assets/Create")]
+		[AutoValidateAntiforgeryToken]
+		public async Task<IActionResult> Create([Bind("LocationId", "Latitude", "Longitude")] Asset asset)
+		{
+			if (ModelState.IsValid)
+			{
+				asset.Alerts = new List<Alert>
+				{
+					new Alert
+					{
+						Text = "Asset Created",
+						AssetID = asset.Id
+					}
+				};
+				databaseContext.Assets.Add(asset);
+				await databaseContext.SaveChangesAsync();
+				return RedirectToAction("Index", "Assets");
+			}
+			return View(asset);
+		}
+
+		public async Task Delete(int id)
+		{
+			if (ModelState.IsValid)
+			{
+				var purgeAsset =  await databaseContext.Assets.Where(asset => asset.Id.Equals(id)).
+					FirstOrDefaultAsync();
+				databaseContext.Assets.Remove(purgeAsset);
+				await databaseContext.SaveChangesAsync();
+			}
 		}
 	}
 }

@@ -3,26 +3,30 @@
 	ViewData["Title"] = "List";
 }
 
-<form asp-action="Index" asp-controller="Assets" method="get">
+<form asp-action="Index" asp-controller="Assets" method="get" style="width: 30%;">
 	<div class="form-group">
 		<div class="d-flex flex-row input-group">
-			<input class="form-control" placeholder="Enter ID" />
-			<input class="btn btn-secondary" name="SearchString" 
-				   style="background-color: blueviolet; width: 10%;" 
+			<input class="form-control" name="searchString" placeholder="Enter ID" type="number" />
+			<input class="btn btn-secondary" style="background-color: blueviolet; width: 20%;" 
 				   type="submit" value="Search" />
 		</div>
 	</div>
 </form>
 
+<p>
+	<a asp-action="Create" class="btn-link">Create New</a>
+</p>
+
 <table class="table">
 	<thead class="thead-light">
 		<tr>
 			<th>@Html.DisplayNameFor(model => model.First().Id)</th>
-			<th>@Html.DisplayNameFor(model => model.First().Area)</th>
+			<th>@Html.DisplayNameFor(model => model.First().Location.Name)</th>
 			<th>@Html.DisplayNameFor(model => model.First().State)</th>
 			<th>@Html.DisplayNameFor(model => model.First().Temperature)</th>
 			<th>@Html.DisplayNameFor(model => model.First().Moisture)</th>
 			<th>@Html.DisplayNameFor(model => model.First().Alerts)</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,11 +34,14 @@
 		{
 			<tr>
 				<td>@Html.DisplayFor(item => asset.Id)</td>
-				<td>@Html.DisplayFor(item => asset.Area)</td>
+				<td>@Html.DisplayFor(item => asset.Location.Name)</td>
 				<td>@Html.DisplayFor(item => asset.State)</td>
 				<td>@Html.DisplayFor(item => asset.Temperature)</td>
 				<td>@Html.DisplayFor(item => asset.Moisture)</td>
 				<td>@Html.DisplayFor(item => asset.Alerts.Count)</td>
+				<td>
+					<a asp-action="Delete" class="alert-link" name="id" style="color: darkred">Delete</a>
+				</td>
 			</tr>
 		}
 	</tbody>

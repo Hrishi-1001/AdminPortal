@@ -1,0 +1,19 @@
+﻿@model IList<Models.Alert>
+
+<table class="table">
+	<thead class="thead-light">
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.First().AssetID)</th>
+			<th>@Html.DisplayNameFor(model => model.First().Text)</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(modelItem => item.AssetID)</td>
+				<td>@Html.DisplayFor(modelItem => item.Text)</td>
+			</tr>
+		}
+	</tbody>
+</table>
