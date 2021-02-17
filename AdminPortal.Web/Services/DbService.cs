@@ -1,9 +1,6 @@
 ﻿using AdminPortal.Web.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AdminPortal.Web.Services
 {
@@ -16,8 +13,8 @@ namespace AdminPortal.Web.Services
 			this.databaseContext = databaseContext;
 		}
 
-		public IList<Models.Alert> Alerts{ get => databaseContext.Alerts.ToList(); }
-		public IList<Models.Asset> Assets { get => databaseContext.Assets.ToList(); }
-		public IList<Models.Location> Locations { get => databaseContext.Locations.ToList(); }
+		public IList<Models.Alert> Alerts => databaseContext.Alerts.ToList();
+		public IList<Models.Asset> Assets => databaseContext.Assets.ToList();
+		public IList<Models.Location> Locations => databaseContext.Locations.ToList();
 	}
 }

@@ -2,7 +2,6 @@
 using AdminPortal.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,7 +46,7 @@ namespace AdminPortal.Web.Controllers
 		[Route("/Alerts/Overview")]
 		public async Task<IActionResult> Overview()
 		{
-			var alerts = await databaseContext.Alerts.Include(o => o.Asset)
+			List<Alert> alerts = await databaseContext.Alerts.Include(o => o.Asset)
 							.Include(o => o.Asset.Location).ToListAsync();
 			return View(alerts);
 		}

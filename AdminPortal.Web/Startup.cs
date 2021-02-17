@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AdminPortal.Web.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using AdminPortal.Web.Models;
-using System.Net.Http;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdminPortal.Web
 {
