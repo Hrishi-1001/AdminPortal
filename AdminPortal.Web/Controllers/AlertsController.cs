@@ -45,5 +45,13 @@ namespace AdminPortal.Web.Controllers
 			}
 			return RedirectToPage("/Error");
 		}
+
+		[Route("/Alerts/Overview")]
+		public async Task<IActionResult> Overview()
+		{
+			var alerts = await databaseContext.Alerts.Include(o => o.Asset)
+							.Include(o => o.Asset.Location).ToListAsync();
+			return View(alerts);
+		}
 	}
 }

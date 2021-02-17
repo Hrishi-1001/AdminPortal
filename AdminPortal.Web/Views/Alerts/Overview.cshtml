@@ -1,0 +1,39 @@
+﻿@model IList<Models.Alert>
+@{
+	//get the location with the maximum number of alerts
+	Dictionary<Models.Location, int> locationAlertPairs = new Dictionary<Models.Location, int>();
+	foreach (var item in Model)
+	{
+		if (locationAlertPairs.ContainsKey(item.Asset.Location) && item.Asset.State != Models.AssetState.deleted)
+		{
+			locationAlertPairs[item.Asset.Location]++;
+		}
+		else if (item.Asset.State != Models.AssetState.deleted)
+		{
+			locationAlertPairs[item.Asset.Location] = 1;
+		}
+	}
+	Models.Location maxKey = locationAlertPairs.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+
+	//get the asset with the maximum number of alerts
+	Dictionary<Models.Asset, int> assetAlertPairs = new Dictionary<Models.Asset, int>();
+	foreach (var item in Model)
+	{
+		if (assetAlertPairs.ContainsKey(item.Asset) && item.Asset.State != Models.AssetState.deleted)
+		{
+			assetAlertPairs[item.Asset]++;
+		}
+		else if (item.Asset.State != Models.AssetState.deleted)
+		{
+			assetAlertPairs[item.Asset] = 1;
+		}
+	}
+	Models.Asset maxAsset = assetAlertPairs.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+}
+
+
+<p>Total Number of Alerts: @Model.Count</p>
+<p>
+	@maxKey.Name has maximum alerts (@locationAlertPairs[maxKey])
+</p>
+<p> @maxAsset.Id present at @maxAsset.Location.Name has maximum alerts (@maxAsset.Alerts.Count) </p>

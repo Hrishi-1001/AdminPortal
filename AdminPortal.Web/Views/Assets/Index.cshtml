@@ -39,9 +39,12 @@
 				<td>@Html.DisplayFor(item => asset.Temperature)</td>
 				<td>@Html.DisplayFor(item => asset.Moisture)</td>
 				<td>@Html.DisplayFor(item => asset.Alerts.Count)</td>
-				<td>
-					<a asp-action="Delete" asp-route-id="@asset.Id" class="btn-link" style="color: darkred">Delete</a>
-				</td>
+				@if (asset.State != Models.AssetState.deleted)
+				{
+					<td>
+						<a asp-action="Delete" asp-route-id="@asset.Id" class="btn-link" style="color: darkred">Delete</a>
+					</td>
+				}
 			</tr>
 		}
 	</tbody>
