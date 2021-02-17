@@ -29,11 +29,11 @@
 		}
 	}
 	Models.Asset maxAsset = assetAlertPairs.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
-}
+} 
 
 
 <p>Total Number of Alerts: @Model.Count</p>
 <p>
 	@maxKey.Name has maximum alerts (@locationAlertPairs[maxKey])
 </p>
-<p> @maxAsset.Id present at @maxAsset.Location.Name has maximum alerts (@maxAsset.Alerts.Count) </p>
+<p>@maxAsset.Id present at @maxAsset.Location.Name has maximum alerts (@maxAsset.Alerts.Count)</p>
