@@ -30,7 +30,6 @@ namespace AdminPortal.Web.Controllers
 			return View(await list.ToListAsync());
 		}
 
-		[HttpPost]
 		[Route("/Alerts/Delete/{id}")]
 		public async Task<IActionResult> Delete(int id)
 		{
@@ -41,9 +40,8 @@ namespace AdminPortal.Web.Controllers
 											   select alerts).FirstOrDefaultAsync();
 				databaseContext.Alerts.Remove(identifiedAlert);
 				await databaseContext.SaveChangesAsync();
-				return RedirectToAction("Index", "Assets");
 			}
-			return RedirectToPage("/Error");
+			return RedirectToAction("Index");
 		}
 
 		[Route("/Alerts/Overview")]

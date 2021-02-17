@@ -72,7 +72,6 @@ namespace AdminPortal.Web.Controllers
 					Text = "Asset Deleted",
 				});
 				await databaseContext.SaveChangesAsync();
-				return RedirectToAction("Index");
 			}
 			return RedirectToAction("Index");
 		}

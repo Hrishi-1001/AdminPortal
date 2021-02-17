@@ -1,20 +1,29 @@
 ﻿@model IList<Models.Alert>
 
-<form asp-action="Index" asp-controller="Alerts" method="get" style="width: 30%;">
-	<div class="form-group">
-		<div class="d-flex flex-row input-group">
-			<input class="form-control" name="id" placeholder="Enter ID" type="number" />
-			<input class="btn btn-secondary" style="background-color: blueviolet; width: 20%;"
-					type="submit" value="Search" />
+
+<div class="d-flex flex-row" style="justify-content: space-between;">
+	<form asp-action="Index" asp-controller="Alerts" method="get" style="width: 30%;">
+		<div class="form-group">
+			<div class="d-flex flex-row input-group">
+				<input class="form-control" name="id" placeholder="Enter ID" type="number" />
+				<input id="submit-button" class="btn btn-secondary" 
+					   style="background-color: blueviolet;" type="submit" value="Search" />
+			</div>
 		</div>
-	</div>
-</form>
+	</form>
+	<a asp-action="Overview" id="overview-button" class="btn btn-light">Overview</a> 
+	<script type="text/javascript">
+		let btn_height = document.getElementById('submit-button').offsetHeight + "px";
+		document.getElementById('overview-button').style.height = btn_height;
+	</script>
+</div>
 
 <table class="table">
 	<thead class="thead-light">
 		<tr>
 			<th>@Html.DisplayNameFor(model => model.First().AssetID)</th>
 			<th>@Html.DisplayNameFor(model => model.First().Text)</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,6 +32,9 @@
 			<tr>
 				<td>@Html.DisplayFor(modelItem => item.AssetID)</td>
 				<td>@Html.DisplayFor(modelItem => item.Text)</td>
+				<td>
+					<a asp-action="Delete" asp-route-id="@item.ID" class="btn-link" style="color: darkred">Delete</a>
+				</td>
 			</tr>
 		}
 	</tbody>
