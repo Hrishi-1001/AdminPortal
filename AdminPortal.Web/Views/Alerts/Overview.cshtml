@@ -1,0 +1,22 @@
+﻿@model IList<Models.Alert>
+@{
+	Dictionary<Models.Location, int> locationAlertPairs = new Dictionary<Models.Location, int>();
+	foreach (var item in Model)
+	{
+		if (locationAlertPairs.ContainsKey(item.Asset.Location))
+		{
+			locationAlertPairs[item.Asset.Location]++;
+		}
+		else
+		{
+			locationAlertPairs[item.Asset.Location] = 1;
+		}
+	}
+	Models.Location maxKey = locationAlertPairs.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+}
+
+
+<p>Total Number of Alerts: @Model.Count</p>
+<p>
+	@maxKey.Name has maximum alerts, with @locationAlertPairs[maxKey] alerts
+</p>
