@@ -26,6 +26,7 @@
 			<th>@Html.DisplayNameFor(model => model.First().Temperature)</th>
 			<th>@Html.DisplayNameFor(model => model.First().Moisture)</th>
 			<th>@Html.DisplayNameFor(model => model.First().Alerts)</th>
+			<th>@Html.DisplayNameFor(model => model.First().LastServiced)</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -33,12 +34,14 @@
 		@foreach (var asset in Model)
 		{
 			<tr>
-				<td>@Html.DisplayFor(item => asset.Id)</td>
+				<td><a asp-action="Index" asp-controller="Servicing" 
+					   asp-route-assetId="@asset.Id" asp-route-asset="@asset">@Html.DisplayFor(item => asset.Id)</a></td>
 				<td>@Html.DisplayFor(item => asset.Location.Name)</td>
 				<td>@Html.DisplayFor(item => asset.State)</td>
 				<td>@Html.DisplayFor(item => asset.Temperature)</td>
 				<td>@Html.DisplayFor(item => asset.Moisture)</td>
 				<td>@Html.DisplayFor(item => asset.Alerts.Count)</td>
+				<td>@Html.DisplayFor(item => asset.LastServiced)</td>
 				@if (asset.State != Models.AssetState.deleted)
 				{
 					<td>

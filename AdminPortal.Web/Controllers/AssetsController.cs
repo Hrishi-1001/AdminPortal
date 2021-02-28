@@ -2,6 +2,7 @@
 using AdminPortal.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,6 +52,7 @@ namespace AdminPortal.Web.Controllers
 					}
 				};
 				asset.State = AssetState.functional;
+				asset.LastServiced = DateTime.Now;
 				databaseContext.Assets.Add(asset);
 				await databaseContext.SaveChangesAsync();
 				return RedirectToAction("Index", "Assets");

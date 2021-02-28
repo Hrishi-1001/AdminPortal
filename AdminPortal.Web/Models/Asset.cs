@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AdminPortal.Web.Models
@@ -29,5 +30,10 @@ namespace AdminPortal.Web.Models
 
 		[Display(Name = "Longitude")]
 		public double Longitude { get; set; }
+
+		[Display(Name = "Last Serviced On")]
+		[DataType(DataType.DateTime)]
+		public DateTime LastServiced { get; set; }
+
 	}
 }
