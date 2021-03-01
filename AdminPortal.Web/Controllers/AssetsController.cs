@@ -19,7 +19,6 @@ namespace AdminPortal.Web.Controllers
 		}
 
 		[Route("/Assets")]
-		[Route("/Assets/{searchString}")]
 		public async Task<IActionResult> Index(string searchString)
 		{
 			IQueryable<Asset> list = databaseContext.Assets.Include(o => o.Location).Include(o => o.Alerts);

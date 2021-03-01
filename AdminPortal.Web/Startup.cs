@@ -25,10 +25,6 @@ namespace AdminPortal.Web
 
 			services.AddMvc();
 
-			services.AddRazorPages();
-
-			services.AddSingleton<Map>();
-
 			services.AddScoped<List<SelectListItem>>();
 
 			services.AddDbContext<Data.DatabaseContext>(options =>
@@ -52,19 +48,14 @@ namespace AdminPortal.Web
 				app.UseHsts();
 			}
 
-			
-
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
 			
-
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
-				endpoints.MapRazorPages();
 			});
 		}
 	}

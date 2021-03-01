@@ -34,13 +34,14 @@
 		@foreach (var asset in Model)
 		{
 			<tr>
-				<td><a asp-action="Index" asp-controller="Servicing" 
-					   asp-route-assetId="@asset.Id" asp-route-asset="@asset">@Html.DisplayFor(item => asset.Id)</a></td>
+				<td><a asp-action="Index" asp-controller="Home" 
+					   asp-route-assetId="@asset.Id">@Html.DisplayFor(item => asset.Id)</a></td>
 				<td>@Html.DisplayFor(item => asset.Location.Name)</td>
 				<td>@Html.DisplayFor(item => asset.State)</td>
 				<td>@Html.DisplayFor(item => asset.Temperature)</td>
 				<td>@Html.DisplayFor(item => asset.Moisture)</td>
-				<td>@Html.DisplayFor(item => asset.Alerts.Count)</td>
+				<td><a asp-action="Index" asp-controller="Alerts"
+					   asp-route-id="@asset.Id">@Html.DisplayFor(item => asset.Alerts.Count)</a></td>
 				<td>@Html.DisplayFor(item => asset.LastServiced)</td>
 				@if (asset.State != Models.AssetState.deleted)
 				{

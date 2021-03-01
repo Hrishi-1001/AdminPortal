@@ -18,8 +18,7 @@ namespace AdminPortal.Web.Controllers
 		}
 
 		[Route("/Alerts")]
-		[Route("/Alerts/{id}")]
-		public async Task<IActionResult> Index(string id = null)
+		public async Task<IActionResult> Index(string id)
 		{
 			IQueryable<Alert> list = databaseContext.Alerts.Include(o => o.Asset).Include(o => o.Asset.Location);
 			if (!string.IsNullOrEmpty(id))
